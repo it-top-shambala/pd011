@@ -24,5 +24,26 @@ namespace PD011.App
         {
             InitializeComponent();
         }
+
+        private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
+        {
+            // Set tooltip visibility
+
+            if (Tg_Btn.IsChecked == true)
+            {
+                tt_home.Visibility = Visibility.Collapsed;
+                tt_exit.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                tt_home.Visibility = Visibility.Visible;
+                tt_exit.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
