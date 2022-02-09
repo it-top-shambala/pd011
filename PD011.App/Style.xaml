@@ -1,14 +1,91 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!--// Toggle Button Style Template //-->
+    <!--//  Border window style  //-->
+    <Style x:Key="Style_BorderWindow" TargetType="{x:Type Border}">
+        
+        <Setter Property="Background" Value="#282d33"/>
+        <Setter Property="BorderBrush" Value="#3A4149"/>
+        <Setter Property="BorderThickness" Value="3"/>
 
-    <ImageBrush x:Key="tb_selected"
+    </Style>
+    
+    <!--//  Navigation panel style //-->
+    <Style x:Key="Style_GridNavigationPanel" TargetType="{x:Type Grid}">
+
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Width" Value="65"/>
+        <Setter Property="Background" Value="#2E333A"/>
+
+    </Style>
+
+    <!--//  Grid for the Menu Toggle Button style //-->
+    <Style x:Key="Style_GridMenuToggleButton" TargetType="Grid">
+
+        <Setter Property="Height" Value="90"/>
+
+    </Style>
+
+    <!--//  Menu title text style  //-->
+    <Style x:Key="Style_MenuTitle" TargetType="{x:Type TextBlock}">
+
+        <Setter Property="FontSize" Value="22"/>
+        
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="Transparent"/>
+
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+
+        <Setter Property="Margin" Value="73,-20,0,0"/>
+
+        <!--// Shadow Effect //-->
+        <Setter Property="TextBlock.Effect">
+
+            <Setter.Value>
+
+                <DropShadowEffect
+                    Color="White"
+                    BlurRadius="10"
+                    ShadowDepth="1"
+                    Direction="-90"/>
+
+            </Setter.Value>
+            
+        </Setter>
+
+    </Style>
+    
+    <!--// Toggle Button style Template //-->
+    <ImageBrush x:Key="ToggleButton_SelectedIcon"
                     ImageSource="/Assets/menu_selected.png"/>
-    <ImageBrush x:Key="tb_unselected"
+    <ImageBrush x:Key="ToggleButton_UnselectedIcon"
                     ImageSource="/Assets/menu_unselected.png"/>
 
-    <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
+    <Style x:Key="Style_TouggleButtonMenu" TargetType="{x:Type ToggleButton}">
+
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="Width" Value="35"/>
+        
+        <Setter Property="BorderThickness" Value="0"/>
+        
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+
+        <Setter Property="Margin" Value="18,-20,0,0"/>
+
+        <!--//  Toggle button default backgraund image //-->
+        <Setter Property="Background">
+
+            <Setter.Value>
+
+                <ImageBrush
+                    ImageSource="/Assets/menu_icon.png"
+                    Stretch="None"/>
+
+            </Setter.Value>
+            
+        </Setter>
 
         <Setter Property="Template">
 
@@ -16,10 +93,11 @@
 
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
 
-                    <Border  x:Name="border"
-                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                 Background="{TemplateBinding Background}"
-                                 SnapsToDevicePixels="True">
+                    <Border
+                        x:Name="border"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        Background="{TemplateBinding Background}"
+                        SnapsToDevicePixels="True">
 
                     </Border>
 
@@ -28,17 +106,27 @@
                         <MultiTrigger>
 
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="true"/>
-                                <Condition Property="IsChecked" Value="false"/>
+                                
+                                <Condition
+                                    Property="IsMouseOver"
+                                    Value="true"/>
+                                <Condition
+                                    Property="IsChecked"
+                                    Value="false"/>
+                                
                             </MultiTrigger.Conditions>
 
                             <MultiTrigger.Setters>
-                                <Setter Property="Background"
-                                        TargetName="border"
-                                        Value="{StaticResource tb_unselected}"/>
-                                <Setter Property="BorderBrush"
-                                        TargetName="border"
-                                        Value="{StaticResource tb_unselected}"/>
+                                
+                                <Setter
+                                    Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource ToggleButton_UnselectedIcon}"/>
+                                <Setter
+                                    Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{StaticResource ToggleButton_UnselectedIcon}"/>
+                                
                             </MultiTrigger.Setters>
 
                         </MultiTrigger>
@@ -46,18 +134,28 @@
                         <MultiTrigger>
 
                             <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="true"/>
-                                <Condition Property="IsChecked" Value="true"/>
+                                
+                                <Condition
+                                    Property="IsMouseOver"
+                                    Value="true"/>
+                                <Condition
+                                    Property="IsChecked"
+                                    Value="true"/>
+                                
                             </MultiTrigger.Conditions>
 
                             <MultiTrigger.Setters>
-                                <Setter Property="Background"
-                                        TargetName="border"
-                                        Value="{StaticResource tb_selected}"/>
+                                
+                                <Setter
+                                    Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource ToggleButton_SelectedIcon}"/>
 
-                                <Setter Property="BorderBrush"
-                                        TargetName="border"
-                                        Value="{StaticResource tb_selected}"/>
+                                <Setter
+                                    Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{StaticResource ToggleButton_SelectedIcon}"/>
+                                
                             </MultiTrigger.Setters>
 
                         </MultiTrigger>
@@ -71,31 +169,52 @@
         </Setter>
 
     </Style>
+    
 
-    <!--// Text font style //-->
+    <!--// Menu Item style //-->
+    <Style x:Key="Style_MenuListView" TargetType="{x:Type ListView}">
 
-    <Style x:Key="font_style" TargetType="TextBlock">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
 
-        <Setter Property="FontFamily"
-                    Value="Fonts/Roboto-Light.ttf #Roboto"/>
+    </Style>
 
-        <Setter Property="VerticalAlignment"
-                    Value="Center"/>
+    <Style x:Key="Style_MenuViewItem" TargetType="{x:Type ListViewItem}">
 
-        <Setter Property="HorizontalAlignment"
-                    Value="Left"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="0,0,0,15"/>
 
-        <Setter Property="Foreground"
-                    Value="White"/>
+    </Style>
 
-        <Setter Property="FontSize"
-                    Value="20"/>
+    <Style x:Key="Style_MenuViewItem_StackPanel" TargetType="{x:Type StackPanel}">
+
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Width" Value="230"/>
+
+    </Style>
+
+    <Style x:Key="Style_MenuViewItem_TextBlock" TargetType="{x:Type TextBlock}">
+
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="25,0,0,0"/>
+
+        <Setter Property="Foreground" Value="White"/>
+
+        <Setter Property="FontSize" Value="20"/>
+
+    </Style>
+
+    <Style x:Key="Style_MenuViewItem_Image" TargetType="{x:Type Image}">
+
+        <Setter Property="Stretch" Value="None"/>
+        <Setter Property="Margin" Value="5,0,0,0"/>
 
     </Style>
 
     <!--// Tooltip Style Template //-->
-
-    <Style TargetType="ToolTip" x:Key="tt_style">
+    <Style x:Key="Style_ToolTip" TargetType="{x:Type ToolTip}" >
 
         <Setter Property="Placement" Value="Right"/>
         <Setter Property="Height" Value="40"/>
@@ -114,10 +233,15 @@
     </Style>
 
     <!--// App Close Button Style Template //-->
-
-    <ImageBrush x:Key="CloseBtn_MouseOver" ImageSource="Assets/close_btn_mous_over.png"/>
+    <ImageBrush x:Key="ButtonClose_Default" ImageSource="Assets/close_btn.png"/>
+    <ImageBrush x:Key="ButtonClose_MouseOver" ImageSource="Assets/close_btn_mous_over.png"/>
 
     <Style x:Key="Close_btn" TargetType="{x:Type Button}">
+
+        <Setter Property="Background" Value="{StaticResource ButtonClose_Default}"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="BorderThickness" Value="0"/>
 
         <Setter Property="Template">
 
@@ -139,7 +263,7 @@
 
                             <Setter Property="Background"
                                         TargetName="button"
-                                        Value="{StaticResource CloseBtn_MouseOver}"/>
+                                        Value="{StaticResource ButtonClose_MouseOver}"/>
 
                         </Trigger>
 

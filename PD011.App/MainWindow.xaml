@@ -19,76 +19,43 @@
     <Window.Resources>
         <ResourceDictionary Source="Style.xaml"/>
     </Window.Resources>
-    
-    <Grid>
-        
-        <!--//  Bakgraund Color  //-->
-        <Border Background="#282d33"
-            BorderBrush="#3A4149"
-            BorderThickness="3">
-            
-            <!--//  Menu  //-->
-            
-            <Grid x:Name="nav_pnl"
-                  HorizontalAlignment="Left"
-                  Width="65"
-                  Background="#2E333A">
 
-                <StackPanel x:Name="st_pnl">
-                    
+    <Grid>
+
+        <!--//  Bakgraund Color  //-->
+        <Border
+            x:Name="Border_Window"
+            Style="{StaticResource Style_BorderWindow}">
+
+            <!--//  Menu  //-->
+            <Grid
+                x:Name="Grid_NavigationPanel"
+                Style="{StaticResource Style_GridNavigationPanel}">
+                
+                <StackPanel
+                    x:Name="StackPanel_NavigationPanel">
+
                     <!--//  Grid for the Menu Toggle Button //-->
-                    
-                    <Grid Height="90">
+                    <Grid
+                        x:Name="Grid_MenuToggleButton"
+                        Style="{StaticResource Style_GridMenuToggleButton}">
 
                         <!--// Menu title text //-->
-
-                        <TextBlock  Grid.Row="1"
-                                    Grid.Column="0"
-                                    Margin="73,-20,0,0"
-                                    Text="M E N U"
-                                    Foreground="White"
-                                    FontSize="22"
-                                    Background="Transparent"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Center">
-                            
-                            <!--// Shadow Effect //-->
-
-                            <TextBlock.Effect>
-
-                                <DropShadowEffect  BlurRadius="10"
-                                                   ShadowDepth="1"
-                                                   Direction="-90"
-                                                   Color="White"/>
-
-                            </TextBlock.Effect>
-
-                        </TextBlock>
-
+                        <TextBlock
+                            x:Name="TextBlock_MenuTitle"
+                            Text="М Е Н Ю"
+                            Grid.Row="1" Grid.Column="0"
+                            Style="{StaticResource Style_MenuTitle}"/>
+                        
                         <!--//  Toggle Button  //-->
 
-                        <ToggleButton x:Name="Tg_Btn"
-                                      Grid.Column="0"
-                                      VerticalAlignment="Center"
-                                      HorizontalAlignment="Left"
-                                      Margin="18,-20,0,0"
-                                      Height="30"
-                                      Width="30"
-                                      BorderThickness="0"
-                                      Style="{StaticResource tb_style}">
-                            
-                            <!--//  Toggle button default backgraund image //-->
+                        <ToggleButton
+                            x:Name="ToggleButton_Menu"
+                            Grid.Row="0" Grid.Column="0"
+                            Style="{StaticResource Style_TouggleButtonMenu}">
 
-                            <ToggleButton.Background>
-
-                                <ImageBrush
-                                    ImageSource="assets/menu_icon.png"
-                                    Stretch="None"/>
-
-                            </ToggleButton.Background>
-                            
                             <!--//  Toggle Button - Checked, Unchecked events //-->
-
+                            <!--Не смог убрать эту часть в стили-->
                             <ToggleButton.Triggers>
 
                                 <EventTrigger RoutedEvent="ToggleButton.Unchecked">
@@ -98,18 +65,18 @@
                                         <Storyboard x:Name="HideStackPanel">
 
                                             <DoubleAnimation
-                                                Storyboard.TargetName="nav_pnl"
+                                                Storyboard.TargetName="Grid_NavigationPanel"
                                                 Storyboard.TargetProperty="Width"
                                                 BeginTime="0:0:0"
                                                 From="230" To="65"
                                                 Duration="0:0:0.2">
 
                                             </DoubleAnimation>
-                                            
+
                                         </Storyboard>
-                                        
+
                                     </BeginStoryboard>
-                                    
+
                                 </EventTrigger>
 
                                 <EventTrigger RoutedEvent="ToggleButton.Checked">
@@ -119,99 +86,142 @@
                                         <Storyboard x:Name="ShowStackPannel">
 
                                             <DoubleAnimation
-                                                Storyboard.TargetName="nav_pnl"
+                                                Storyboard.TargetName="Grid_NavigationPanel"
                                                 Storyboard.TargetProperty="Width"
                                                 BeginTime="0:0:0"
                                                 From="65" To="230"
                                                 Duration="0:0:0.3">
-                                                
+
                                             </DoubleAnimation>
-                                            
+
                                         </Storyboard>
-                                        
+
                                     </BeginStoryboard>
-                                    
+
                                 </EventTrigger>
 
                             </ToggleButton.Triggers>
-                            
+
+                            <ToggleButton.ToolTip>
+                                <ToolTip
+                                    x:Name="ToolTip_Menu"
+                                    Content="М Е Н Ю"
+                                    Style="{StaticResource Style_ToolTip}"/>
+
+                            </ToggleButton.ToolTip>
+
                         </ToggleButton>
-                        
+
                     </Grid>
-                    
+
                     <!--// ListView with menu list items //-->
-                    
                     <ListView
-                        x:Name="LV"
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    
+                        x:Name="ListView_Menu"
+                        Style="{StaticResource Style_MenuListView}">
+
                         <!--//  Home  //-->
-                        <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15"
-                                      MouseEnter="ListViewItem_MouseEnter">
+                        <ListViewItem 
+                            MouseEnter="ListViewItem_MouseEnter"
+                            Style="{StaticResource Style_MenuViewItem}">
 
-                            <StackPanel Orientation="Horizontal"
-                                        Width="230">
+                            <StackPanel
+                                Style="{StaticResource Style_MenuViewItem_StackPanel}">
 
-                                <Image Source="/Assets/shop_icon.png"
-                                       Stretch="None"
-                                       Margin="5,0,0,0"/>
+                                <Image
+                                    Source="/Assets/shop_icon.png"
+                                    Style="{StaticResource Style_MenuViewItem_Image}"/>
 
-                                <TextBlock Text="Магазин"
-                                           Margin="25,0,0,0"
-                                            Style="{StaticResource font_style}"/>
+                                <TextBlock
+                                    x:Name="TextBox_Shop"
+                                    Text="Магазин"
+                                    Style="{StaticResource Style_MenuViewItem_TextBlock}"/>
 
                             </StackPanel>
+                            
                             <!--// Tooltip //-->
-
                             <ListViewItem.ToolTip>
 
-                                <ToolTip x:Name="tt_home"
-                                         Content="Магазин"
-                                         Style="{StaticResource tt_style}"/>
+                                <ToolTip
+                                    x:Name="ToolTip_Shop"
+                                    Content="Магазин"
+                                    Style="{StaticResource Style_ToolTip}"/>
 
                             </ListViewItem.ToolTip>
 
                         </ListViewItem>
-                        <!--//  Exit  //-->
-                        <ListViewItem HorizontalAlignment="Left"
-                                      Margin="0,0,0,15"
-                                      MouseEnter="ListViewItem_MouseEnter">
+                        
+                        <!--//  Setting  //-->
+                        <ListViewItem 
+                            MouseEnter="ListViewItem_MouseEnter"
+                            Style="{StaticResource Style_MenuViewItem}">
 
-                            <StackPanel Orientation="Horizontal"
-                                        Width="230">
+                            <StackPanel
+                                Style="{StaticResource Style_MenuViewItem_StackPanel}">
 
-                                <Image Source="/Assets/exit_icon.png"
-                                       Stretch="None"
-                                       Margin="5,0,0,0"/>
+                                <Image
+                                    Source="/Assets/icon_setting.png"
+                                    Style="{StaticResource Style_MenuViewItem_Image}"/>
 
-                                <TextBlock Text="Выход"
-                                           Margin="25,0,0,0"
-                                            Style="{StaticResource font_style}"/>
+                                <TextBlock
+                                    x:Name="TextBox_Setting"
+                                    Text="Настройки"
+                                    Style="{StaticResource Style_MenuViewItem_TextBlock}"/>
 
                             </StackPanel>
+                            
+                            <!--// Tooltip //-->
                             <ListViewItem.ToolTip>
 
-                                <ToolTip x:Name="tt_exit"
-                                         Content="Выход"
-                                         Style="{StaticResource tt_style}"/>
+                                <ToolTip
+                                    x:Name="ToolTip_Setting"
+                                    Content="Настройки"
+                                    Style="{StaticResource Style_ToolTip}"/>
+
+                            </ListViewItem.ToolTip>
+                        </ListViewItem>
+
+                        <!--//  Exit  //-->
+                        <ListViewItem 
+                            MouseEnter="ListViewItem_MouseEnter"
+                            Style="{StaticResource Style_MenuViewItem}">
+
+                            <StackPanel
+                                Style="{StaticResource Style_MenuViewItem_StackPanel}">
+
+                                <Image
+                                    Source="/Assets/exit_icon.png"
+                                    Style="{StaticResource Style_MenuViewItem_Image}"/>
+
+                                <TextBlock
+                                    x:Name="TextBox_Exit"
+                                    Text="Выход"
+                                    Style="{StaticResource Style_MenuViewItem_TextBlock}"/>
+
+                            </StackPanel>
+                            
+                            <!--// Tooltip //-->
+                            <ListViewItem.ToolTip>
+
+                                <ToolTip
+                                    x:Name="ToolTip_Exit"
+                                    Content="Выход"
+                                    Style="{StaticResource Style_ToolTip}"/>
 
                             </ListViewItem.ToolTip>
 
                         </ListViewItem>
 
                     </ListView>
-                    
+
                 </StackPanel>
-                             
+
             </Grid>
-            
+
         </Border>
 
         <!--//  UserControl in her  //-->
         <Grid>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="65"/>
                 <ColumnDefinition Width="*"/>
@@ -222,21 +232,20 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
-            
+
             <!--//  Content in sp_content  //-->
             <StackPanel
-                x:Name="sp_content"
+                x:Name="StackPanel_Content"
                 Grid.Row="1" Grid.Column="1"/>
-            
+
             <!--//  Info panel in sp_info  //-->
             <StackPanel
-                x:Name="sp_info"
+                x:Name="StackPanel_Info"
                 Grid.Row="2" Grid.Column="1"/>
 
         </Grid>
 
         <!--// App Close Button //-->
-
         <Grid>
 
             <Grid.ColumnDefinitions>
@@ -251,25 +260,16 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="CloseBtn"
-                        Grid.Column="1"
-                        Grid.Row="1"
-                        Height="40"
-                        Width="40"
-                        BorderThickness="0"
+            <Button
+                x:Name="Button_Close"
+                Grid.Row="1" Grid.Column="1"
                 Style="{StaticResource Close_btn}"
-                Click="CloseBtn_Click">
-
-                <Button.Background>
-
-                    <ImageBrush ImageSource="Assets/close_btn.png"
-                                Stretch="Fill"/>
-
-                </Button.Background>
+                Click="Button_Close_Click">
 
             </Button>
 
         </Grid>
 
     </Grid>
+    
 </Window>

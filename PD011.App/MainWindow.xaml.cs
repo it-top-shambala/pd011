@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PD011.App
 {
@@ -29,19 +17,23 @@ namespace PD011.App
         {
             // Set tooltip visibility
 
-            if (Tg_Btn.IsChecked == true)
+            if (ToggleButton_Menu.IsChecked == true)
             {
-                tt_home.Visibility = Visibility.Collapsed;
-                tt_exit.Visibility = Visibility.Collapsed;
+                ToolTip_Menu.Visibility = Visibility.Collapsed;
+                ToolTip_Shop.Visibility = Visibility.Collapsed;
+                ToolTip_Setting.Visibility = Visibility.Collapsed;
+                ToolTip_Exit.Visibility = Visibility.Collapsed;
             }
             else
             {
-                tt_home.Visibility = Visibility.Visible;
-                tt_exit.Visibility = Visibility.Visible;
+                ToolTip_Menu.Visibility = Visibility.Visible;
+                ToolTip_Shop.Visibility = Visibility.Visible;
+                ToolTip_Setting.Visibility = Visibility.Visible;
+                ToolTip_Exit.Visibility = Visibility.Visible;
             }
         }
 
-        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        private void Button_Close_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
