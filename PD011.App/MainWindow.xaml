@@ -357,13 +357,36 @@
                     </ListView>
                     
                 </StackPanel>
-                
-                <!--//  UserControl in her  //-->
-                
+                             
             </Grid>
             
         </Border>
-        
+
+        <!--//  UserControl in her  //-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="65"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            
+            <!--//  Content in sp_content  //-->
+            <StackPanel
+                x:Name="sp_content"
+                Grid.Row="1" Grid.Column="1"/>
+            
+            <!--//  Info panel in sp_info  //-->
+            <StackPanel
+                x:Name="sp_info"
+                Grid.Row="2" Grid.Column="1"/>
+
+        </Grid>
+
         <!--// App Close Button //-->
 
         <Grid>
@@ -371,11 +394,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="60"/>
-                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
                 <RowDefinition Height="60"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
