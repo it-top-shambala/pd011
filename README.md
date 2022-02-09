@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/itstep-shambala/pd011/badge)](https://www.codefactor.io/repository/github/itstep-shambala/pd011)
+
 # Техническое задание. Приложение «Книжный магазин».
 
 ## Создать приложение «Книжный магазин».
