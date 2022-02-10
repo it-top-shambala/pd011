@@ -13,10 +13,13 @@ namespace PD011.App
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Set tooltip visibility
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
         {
-            // Set tooltip visibility
-
             if (ToggleButton_Menu.IsChecked == true)
             {
                 ToolTip_Menu.Visibility = Visibility.Collapsed;
