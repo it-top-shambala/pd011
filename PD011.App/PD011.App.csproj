@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\close_btn.png" />
+    <None Remove="Assets\close_btn_mous_over.png" />
+    <None Remove="Assets\exit_icon.png" />
+    <None Remove="Assets\icon_menu.png" />
+    <None Remove="Assets\icon_setting.png" />
+    <None Remove="Assets\menu_icon.png" />
+    <None Remove="Assets\menu_selected.png" />
+    <None Remove="Assets\menu_unselected.png" />
+    <None Remove="Assets\shop_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\close_btn.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\close_btn_mous_over.png" />
+    <Resource Include="Assets\exit_icon.png" />
+    <Resource Include="Assets\icon_menu.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\icon_setting.png" />
+    <Resource Include="Assets\menu_icon.png" />
+    <Resource Include="Assets\menu_selected.png" />
+    <Resource Include="Assets\menu_unselected.png" />
+    <Resource Include="Assets\shop_icon.png" />
+  </ItemGroup>
+
+</Project>
