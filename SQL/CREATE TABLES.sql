@@ -56,7 +56,7 @@ CREATE TABLE table_publication_of_book
     id_book                INT    NOT NULL,
     CONSTRAINT FK_book_publishers
     FOREIGN KEY (id_publisher) REFERENCES table_publishers (id) ON UPDATE NO ACTION ON DELETE NO ACTION,
-    CONSTRAINT FK_book
+    CONSTRAINT FK_book_publication
     FOREIGN KEY (id_book) REFERENCES table_book (id) ON UPDATE NO ACTION ON DELETE NO ACTION,
     publication_page_count INT    NOT NULL,
     publication_year       INT    NOT NULL,
@@ -95,9 +95,10 @@ CREATE TABLE table_roles
 
 CREATE TABLE table_user_role
 (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_user INT NOT NULL,
     id_role INT NOT NULL,
-    CONSTRAINT FK_user
+    CONSTRAINT FK_user_role
     FOREIGN KEY (id_user) REFERENCES table_users (id) ON UPDATE NO ACTION ON DELETE NO ACTION,
     CONSTRAINT FK_role
     FOREIGN KEY (id_role) REFERENCES table_roles (id) ON UPDATE NO ACTION ON DELETE NO ACTION
@@ -134,7 +135,7 @@ CREATE TABLE table_buing
     company_name    VARCHAR(100) NOT NULL,
     id_user         INT          NOT NULL,
     id_buy_status   INT          NOT NULL,
-    CONSTRAINT FK_user
+    CONSTRAINT FK_user_buing
     FOREIGN KEY (id_user) REFERENCES table_users (id) ON UPDATE NO ACTION ON DELETE NO ACTION,
     CONSTRAINT FK_book_buy_status
     FOREIGN KEY (id_buy_status) REFERENCES table_status_buy (id) ON UPDATE NO ACTION ON DELETE NO ACTION
@@ -147,7 +148,7 @@ CREATE TABLE table_sel_publication_of_book
     quntity                VARCHAR(100) NOT NULL,
     CONSTRAINT FK_book_sel
     FOREIGN KEY (id_sel) REFERENCES table_sales (id) ON UPDATE NO ACTION ON DELETE NO ACTION,
-    CONSTRAINT FK_publication_of_book
+    CONSTRAINT FK_publication_of_book_sel
     FOREIGN KEY (id_publication_of_book) REFERENCES table_publication_of_book (id) ON UPDATE NO ACTION ON DELETE NO ACTION
 );
 
@@ -158,6 +159,6 @@ CREATE TABLE table_buy_publication_of_book
     quntity                VARCHAR(100) NOT NULL,
     CONSTRAINT FK_book_buy
     FOREIGN KEY (id_buy) REFERENCES table_buing (id) ON UPDATE NO ACTION ON DELETE NO ACTION,
-    CONSTRAINT FK_publication_of_book
+    CONSTRAINT FK_publication_of_book_buy
     FOREIGN KEY (id_publication_of_book) REFERENCES table_publication_of_book (id) ON UPDATE NO ACTION ON DELETE NO ACTION
 );
